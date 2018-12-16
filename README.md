@@ -1,7 +1,7 @@
 
 ### Escuela Colombiana de Ingeniería
 ### Arquitecturas de Software - ARSW
-## Laboratorio - Broker de Mensajes STOMP con WebSockets + HTML5 Canvas.
+## Laboratorio - Broker de Mensajes STOMP con WebSockets + HTML5 Canvas. - Caso: Dibujo Colaborativo Web
 
 
 ### Descripción		
