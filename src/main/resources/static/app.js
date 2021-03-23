@@ -20,7 +20,7 @@ var app = (function () {
 
   var publicPoint = function (point) {
     stompClient.send(
-      `/topic/newpoint.${identificador}`,
+      `/app/newpoint.${identificador}`,
       {},
       JSON.stringify(point)
     );
@@ -44,7 +44,6 @@ var app = (function () {
     //subscribe to /topic/TOPICXX when connections succeed
     stompClient.connect({}, function (frame) {
       console.log("Connected: " + frame);
-      console.log(`/topic/newpoint.${identificador}`);
       stompClient.subscribe(
         `/topic/newpoint.${identificador}`,
         function (message) {
