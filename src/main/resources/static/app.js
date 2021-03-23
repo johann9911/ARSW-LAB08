@@ -40,12 +40,8 @@ var app = (function () {
 
       stompClient.subscribe("/topic/newpoint", function (message) {
         var theObject = JSON.parse(message.body);
-        alert(theObject.x + "--" + theObject.y);
-        //console.log("--");
-        //console.log(eventbody.body);
-        //console.log(JSON.parse(eventbody.body).content);
-        //console.log("--");
-        //showGreeting(JSON.parse(eventbody.body).content);
+        var punto = new Point(theObject.x, theObject.y);
+        addPointToCanvas(punto);
       });
     });
   };
