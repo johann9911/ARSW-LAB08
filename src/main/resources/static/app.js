@@ -26,6 +26,18 @@ var app = (function () {
     );
   };
 
+  var addPolygonToCanvas = function (lista) {
+    var c2 = canvas.getContext("2d");
+    c2.fillStyle = "#FF4136";
+    c2.beginPath();
+    c2.moveTo(lista[0].x, lista[0].y);
+    for (var i = 1; i < lista.length; i++) {
+      c2.lineTo(lista[i].x, lista[i].y);
+    }
+    c2.closePath();
+    c2.fill();
+  };
+
   var getMousePosition = function (evt) {
     canvas = document.getElementById("canvas");
     var rect = canvas.getBoundingClientRect();
@@ -50,6 +62,14 @@ var app = (function () {
           var theObject = JSON.parse(message.body);
           var punto = new Point(theObject.x, theObject.y);
           addPointToCanvas(punto);
+        }
+      );
+      stompClient.subscribe(
+        `/topic/newpolygon.${identificador}`,
+        function (message) {
+          var listPolygons = JSON.parse(message.body);
+          console.log(listPolygons);
+          addPolygonToCanvas(listPolygons);
         }
       );
     });
